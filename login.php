@@ -23,7 +23,16 @@
 
   <!--Card content-->
   <div class="card-body px-lg-5">
-
+  <?php if (isset($_GET['required_msg'])) { ?>
+  <div class="alert alert-warning text-center" role="alert">
+  <?php echo $_GET['required_msg']; ?>
+</div>
+<?php } ?>
+<?php if (isset($_GET['error'])) { ?>
+  <div class="alert alert-danger text-center" role="alert">
+  <?php echo $_GET['error']; ?>
+</div>
+<?php } ?>
       <!-- Form -->
       <form class="text-center" style="color: #757575;" action="backend/route/loginController.php" method="post">
 
@@ -32,12 +41,12 @@
 
           <!-- E-mai -->
           <div class="md-form ">
-              <input type="email" id="user_email" class="form-control" required>
+              <input type="email" id="user_email" name="user_email" class="form-control">
               <label for="user_email">E-mail</label>
           </div>
           <!-- Password -->
       <div class="md-form">
-        <input type="password" id="user_password" class="form-control">
+        <input type="password" id="user_password" name="user_password" class="form-control">
         <label for="user_password">Password</label>
       </div>
           <!-- Sign in button -->
