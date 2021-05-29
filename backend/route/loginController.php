@@ -44,7 +44,7 @@ if(isset($_POST['user_email']) && isset($_POST['user_password'])){
     }
   }if(mysqli_num_rows($output_login_query_moderator)===1){
   $row_data= mysqli_fetch_assoc($output_login_query_moderator);
-      if($row_data['	usr_email'] === $user_email && $row_data['password'] === $encrypt_submitted_password ){
+      if($row_data['usr_email'] === $user_email && $row_data['password'] === $encrypt_submitted_password ){
         $_SESSION['id']=$row_data['id'];
         $_SESSION['name']=$row_data['name'];
         $_SESSION['usr_email']=$row_data['usr_email'];
@@ -57,11 +57,11 @@ if(isset($_POST['user_email']) && isset($_POST['user_password'])){
           exit();
         }
       }
+    }else{
+      header("Location: ../../login.php?error=Incorect User Email or password");
+      exit();
     }
  }else{
-  header("Location: ../../login.php?error=Incorect User name or password");
-  exit();
-}else{
   header("Location: ../../login.php");
   exit();
 }
